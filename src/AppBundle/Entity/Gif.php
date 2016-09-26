@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Gif
  *
@@ -28,6 +30,23 @@ class Gif
      * @ORM\Column(name="originalName", type="string", length=255)
      */
     private $originalName;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hash", type="string", length=255)
+     */
+    private $hash;
+
+
+    /**
+     * @var title
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $title;
 
     /**
      * Get id
@@ -54,6 +73,14 @@ class Gif
     }
 
     /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="SVP, uploadez l'image en tant que fichier .gif")
+     * @Assert\File(mimeTypes={ "image/gif" })
+     */
+    private $source;
+
+    /**
      * Get originalName
      *
      * @return string
@@ -61,5 +88,77 @@ class Gif
     public function getOriginalName()
     {
         return $this->originalName;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Gif
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set source
+     *
+     * @param string $source
+     *
+     * @return Gif
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * Set hash
+     *
+     * @param string $hash
+     *
+     * @return Gif
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+
+        return $this;
+    }
+
+    /**
+     * Get hash
+     *
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
     }
 }
