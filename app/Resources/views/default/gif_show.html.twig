@@ -3,21 +3,10 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <h1>Les gifs</h1>
+            <h1>{{gif.title}}</h1>
 
-            <div class="gif-list">
-                {% for gif in gifs %}
-                    <a href="/gif/{{gif.id}}/details" class="gif">
-                        <div class="gif__media">
-                            <img src="/gif/{{gif.id}}/{{gif.originalName}}">
-                        </div>
+            <img src="/gif/{{gif.id}}/{{gif.originalName}}">
 
-                        <div class="gif__title">
-                            {{gif.title|e}} - {{ gif.originalName|e }}
-                        </div>
-                    </a>
-
-                {% endfor %}
             </div>
         </div>
     </div>
